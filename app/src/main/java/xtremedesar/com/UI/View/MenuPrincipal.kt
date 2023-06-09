@@ -72,7 +72,6 @@ class MenuPrincipal : AppCompatActivity(), AdapterMoneda.MonedaAdapterListener {
         _Binding.appBarMain.btnAgregar.setOnClickListener { onMonitoreoAgregar() }
     }
 
-
     private fun CargarListaMonedas() {
         _Dialogo = _FunsHelper.CargarDialog(this)
 
@@ -91,7 +90,7 @@ class MenuPrincipal : AppCompatActivity(), AdapterMoneda.MonedaAdapterListener {
         val ShowDialog = AlertDialog.show()
         AlertDialog.create()
 
-        _BindingInflaDialog.TitFormVive.setText("Agregar Información Moneda")
+        _BindingInflaDialog.TitFormInfo.setText("Agregar Información Moneda")
 
         _BindingInflaDialog.BtnFormGuardar.setOnClickListener {
 
@@ -124,6 +123,47 @@ class MenuPrincipal : AppCompatActivity(), AdapterMoneda.MonedaAdapterListener {
     }
 
     override fun onMonedaEditar(Posicion: Int, Moneda: MonedaModel?) {
+        val AlertDialog = AlertDialog.Builder(this)
+
+        val _BindingInflaDialog = AgregarRegistroMonedaBinding.inflate(layoutInflater)
+        AlertDialog.setView(_BindingInflaDialog.root)
+
+        val ShowDialog = AlertDialog.show()
+        AlertDialog.create()
+
+        _BindingInflaDialog.TitFormInfo.setText("Editar Información Moneda")
+        _BindingInflaDialog.etxtFormNombre.setText(Moneda?.Nombre)
+        _BindingInflaDialog.etxtFormPais.setText(Moneda?.Pais)
+        _BindingInflaDialog.etxtFormSimbolo.setText(Moneda?.Simbolo)
+
+        _BindingInflaDialog.BtnFormGuardar.setOnClickListener {
+
+            try {
+                _MonedaService.updateMoneda(
+                    _Realm,
+                    Moneda!!.ID,
+                    _BindingInflaDialog.etxtFormNombre.text.toString(),
+                    _BindingInflaDialog.etxtFormPais.text.toString(),
+                    _BindingInflaDialog.etxtFormSimbolo.text.toString()
+                )
+
+                MonedaAdapter.notifyDataSetChanged()
+
+                _FunsHelper.SuccessDialogSimple(
+                    this@MenuPrincipal,
+                    "Exito",
+                    "Se Edito Correctamente"
+                )
+            } catch (e: Exception) {
+                _FunsHelper.ErrorDialogSimple(
+                    this@MenuPrincipal,
+                    "Error",
+                    "No Se Edito Correctamente"
+                )
+            }
+
+            ShowDialog.dismiss()
+        }
     }
 
     override fun onMonedaEliminar(Posicion: Int, Moneda: MonedaModel?) {

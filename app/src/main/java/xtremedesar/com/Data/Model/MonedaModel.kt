@@ -6,13 +6,16 @@ import io.realm.annotations.RealmClass
 import io.realm.annotations.Required
 
 @RealmClass
-open class NotaModel() : RealmModel {
+open class MonedaModel() : RealmModel {
     @PrimaryKey
-    var _ID: String = ""
+    var ID: String = ""
 
     @Required
-    var _Titulo: String? = ""
+    var Nombre: String? = ""
 
     @Required
-    var _Descripcion: String? = ""
+    var Pais: String? = ""
+
+    @Required
+    var Simbolo: String? = ""
 }

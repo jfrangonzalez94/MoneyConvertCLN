@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <!--we add icons-->
+    <item
+        android:id="@+id/detail_registro"
+        android:icon="@drawable/ic_detalle"
+        android:title="Detalle Registro" />
+    <item
+        android:id="@+id/edit_registro"
+        android:icon="@drawable/ic_editar"
+        android:title="Editar Registro" />
+    <item
+        android:id="@+id/elim_registro"
+        android:icon="@drawable/ic_eliminar"
+        android:title="Eliminar Registro" />
+
+</menu>

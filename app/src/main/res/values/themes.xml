@@ -19,6 +19,10 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="LoginTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">@drawable/text_input_box_stroke</item>
+    </style>
+
     <style name="ButtonStyleFilled">
         <item name="backgroundTint">@color/colorPrimary</item>
         <item name="android:textColor">@color/Blanco0</item>

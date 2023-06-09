@@ -26,24 +26,24 @@ interface NotaService {
     }
 
     fun updateNota(_Realm: Realm, _Id: String, _Titulo: String, _Descripcion: String) {
-        val target = _Realm.where(NotaModel::class.java)
+        val _Nota = _Realm.where(NotaModel::class.java)
             .equalTo("id", _Id)
             .findFirst()
 
         _Realm.executeTransaction {
-            target?._Titulo = _Titulo
-            target?._Descripcion = _Descripcion
-            _Realm.insertOrUpdate(target)
+            _Nota?._Titulo = _Titulo
+            _Nota?._Descripcion = _Descripcion
+            _Realm.insertOrUpdate(_Nota)
         }
     }
 
     fun deleteNota(_Realm: Realm, _Id: String) {
-        val notes = _Realm.where(NotaModel::class.java)
+        val _Nota = _Realm.where(NotaModel::class.java)
             .equalTo("id", _Id)
             .findFirst()
 
         _Realm.executeTransaction {
-            notes!!.deleteFromRealm()
+            _Nota!!.deleteFromRealm()
         }
     }
 }

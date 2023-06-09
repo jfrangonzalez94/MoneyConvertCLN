@@ -69,6 +69,7 @@ class MenuPrincipal : AppCompatActivity(), AdapterMoneda.MonedaAdapterListener {
 
         CargarListaMonedas()
 
+        _Binding.appBarMain.btnAgregar.setOnClickListener { onMonitoreoAgregar() }
     }
 
 
@@ -79,29 +80,6 @@ class MenuPrincipal : AppCompatActivity(), AdapterMoneda.MonedaAdapterListener {
         _Binding.appBarMain.RVListaMonedas.layoutManager = LinearLayoutManager(this)
         _Binding.appBarMain.RVListaMonedas.adapter = MonedaAdapter
         _Dialogo.dismiss()
-
-        /*
-        try {
-            _MonedaService.addMoneda(_Realm, "Dolar", "USA", "$")
-            _MonedaService.addMoneda(_Realm, "Euro", "España", "€")
-            _MonedaService.addMoneda(_Realm, "Cordoba", "Nicaragua", "C$")
-
-            _Dialogo.dismiss()
-            _FunsHelper.SuccessDialogSimple(
-                this@MenuPrincipal,
-                "Exito",
-                "Se Agregó Correctamente"
-            )
-        } catch (e: Exception) {
-            _Dialogo.dismiss()
-            _FunsHelper.ErrorDialogSimple(
-                this@MenuPrincipal,
-                "Error",
-                "No Se Agregó Correctamente"
-            )
-        }
-         */
-
     }
 
     private fun onMonitoreoAgregar() {
@@ -116,16 +94,28 @@ class MenuPrincipal : AppCompatActivity(), AdapterMoneda.MonedaAdapterListener {
         _BindingInflaDialog.TitFormVive.setText("Agregar Información Moneda")
 
         _BindingInflaDialog.BtnFormGuardar.setOnClickListener {
-            val _Vivero = Registro(
-                _Latitud,
-                _Longitud,
-                _BindingInflaDialog.etxtDescripFormVive.text.toString(),
-                DepartamentoId,
-                MunicipioId,
-                ComunidadId,
-                DelegacionId
-            )
-            AgregarFormViveros(_Vivero)
+
+            try {
+                _MonedaService.addMoneda(
+                    _Realm,
+                    _BindingInflaDialog.etxtFormNombre.text.toString(),
+                    _BindingInflaDialog.etxtFormPais.text.toString(),
+                    _BindingInflaDialog.etxtFormSimbolo.text.toString()
+                )
+
+                _FunsHelper.SuccessDialogSimple(
+                    this@MenuPrincipal,
+                    "Exito",
+                    "Se Agregó Correctamente"
+                )
+            } catch (e: Exception) {
+                _FunsHelper.ErrorDialogSimple(
+                    this@MenuPrincipal,
+                    "Error",
+                    "No Se Agregó Correctamente"
+                )
+            }
+
             ShowDialog.dismiss()
         }
     }
@@ -137,6 +127,36 @@ class MenuPrincipal : AppCompatActivity(), AdapterMoneda.MonedaAdapterListener {
     }
 
     override fun onMonedaEliminar(Posicion: Int, Moneda: MonedaModel?) {
+        _FunsHelper.WarningDialogConfirm(
+            this,
+            getString(R.string.app_name),
+            "Estas realmente seguro de Eliminar este Registro?"
+        ).setOnClickListener(object : OnDialogClickListener {
+            override fun onClick(_Dialog: AestheticDialog.Builder) {
+                try {
+                    _MonedaService.deleteMoneda(
+                        _Realm,
+                        Moneda!!.ID
+                    )
+
+                    MonedaAdapter.notifyDataSetChanged()
+
+                    _FunsHelper.SuccessDialogSimple(
+                        this@MenuPrincipal,
+                        "Exito",
+                        "Se Eliminó Correctamente"
+                    )
+                } catch (e: Exception) {
+                    _FunsHelper.ErrorDialogSimple(
+                        this@MenuPrincipal,
+                        "Error",
+                        "No Se Eliminó Correctamente"
+                    )
+                }
+                _Dialog.dismiss()
+            }
+        }).show()
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

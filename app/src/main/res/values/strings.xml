@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MoneyConvertCLN</string>
+
+    <string name="alert_1">No se ha podido conectar con el servidor.
+        Comprueba tu conexión a internet y vuelve a intentarlo.</string>
+    <string name="alert_2">Usuario y Contraseña incorrectos, vuelva intentarlo.</string>
+    <string name="alert_3">Realmente desea salir de la aplicación?</string>
+    <string name="alert_4">Es necesario llenar todos los campos.</string>
+    <string name="alert_5">Se cargo correctamente la información.</string>
+</resources>

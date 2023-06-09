@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="Moneda">
+        <menu>
+            <item
+                android:id="@+id/nav_moneda_lista"
+                android:icon="@drawable/ic_lista_moneda"
+                android:title="Lista de Monedas" />
+            <item
+                android:id="@+id/nav_moneda_calculadora"
+                android:icon="@drawable/ic_calculadora_moneda"
+                android:title="Calculadora" />
+        </menu>
+    </item>
+
+    <item android:title="Sistema">
+        <menu>
+            <item
+                android:id="@+id/nav_sistema_version"
+                android:icon="@drawable/ic_version"
+                android:title="Versión Aplicación" />
+            <item
+                android:id="@+id/nav_sistema_cerrar"
+                android:icon="@drawable/ic_salir_blanco"
+                android:title="Cerrar Sesión" />
+        </menu>
+    </item>
+
+</menu>

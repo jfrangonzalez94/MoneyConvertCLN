@@ -10,22 +10,4 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RVListaMonedas"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="5dp"
-        android:orientation="vertical"
-        tools:listitem="@layout/activity_card_recyclerview_item" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btn_agregar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginEnd="45dp"
-        android:layout_marginBottom="45dp"
-        android:backgroundTint="@color/TarjetaNaranja"
-        android:src="@drawable/ic_agregar" />
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

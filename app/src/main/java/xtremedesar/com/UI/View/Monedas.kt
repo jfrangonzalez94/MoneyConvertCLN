@@ -10,7 +10,7 @@ import com.thecode.aestheticdialogs.AestheticDialog
 import com.thecode.aestheticdialogs.OnDialogClickListener
 import io.realm.Realm
 import www.sanju.todonotes.Interface.MonedaService
-import xtremedesar.com.Application.MoneyApplication
+import xtremedesar.com.Application.MoneyApplication.Companion._FunsHelper
 import xtremedesar.com.Data.Model.MonedaConvertModel
 import xtremedesar.com.Data.Model.MonedaModel
 import xtremedesar.com.R
@@ -22,9 +22,9 @@ class Monedas : AppCompatActivity(), AdapterMoneda.MonedaAdapterListener {
 
     private lateinit var _Binding: ActivityMonedasBinding
     private lateinit var _Realm: Realm
-    lateinit var _Dialogo: Dialog
+    private lateinit var _Dialogo: Dialog
     private var _MonedaService: MonedaService = MonedaService()
-    private lateinit var MonedaAdapter: AdapterMoneda
+    lateinit var MonedaAdapter: AdapterMoneda
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,13 +36,14 @@ class Monedas : AppCompatActivity(), AdapterMoneda.MonedaAdapterListener {
         //INICIAR REALM
         _Realm = Realm.getDefaultInstance()
 
+        //CARGAR CONTENIDO
         CargarListaMonedas()
 
-        _Binding.btnAgregar.setOnClickListener { onMonitoreoAgregar() }
+        _Binding.btnAgregar.setOnClickListener { onMonedaAgregar() }
     }
 
     private fun CargarListaMonedas() {
-        _Dialogo = MoneyApplication._FunsHelper.CargarDialog(this)
+        _Dialogo = _FunsHelper.CargarDialog(this)
 
         MonedaAdapter = AdapterMoneda(this, _MonedaService.getAllMonedas(_Realm), this)
         _Binding.RVListaMonedas.layoutManager = LinearLayoutManager(this)
@@ -50,7 +51,7 @@ class Monedas : AppCompatActivity(), AdapterMoneda.MonedaAdapterListener {
         _Dialogo.dismiss()
     }
 
-    private fun onMonitoreoAgregar() {
+    private fun onMonedaAgregar() {
         val AlertDialog = AlertDialog.Builder(this)
 
         val _BindingInflaDialog = AgregarRegistroMonedaBinding.inflate(layoutInflater)
@@ -71,13 +72,15 @@ class Monedas : AppCompatActivity(), AdapterMoneda.MonedaAdapterListener {
                     _BindingInflaDialog.etxtFormSimbolo.text.toString()
                 )
 
-                MoneyApplication._FunsHelper.SuccessDialogSimple(
+                CargarListaMonedas()
+
+                _FunsHelper.SuccessDialogSimple(
                     this@Monedas,
                     "Exito",
                     "Se Agregó Correctamente"
                 )
             } catch (e: Exception) {
-                MoneyApplication._FunsHelper.ErrorDialogSimple(
+                _FunsHelper.ErrorDialogSimple(
                     this@Monedas,
                     "Error",
                     "No Se Agregó Correctamente"
@@ -122,15 +125,15 @@ class Monedas : AppCompatActivity(), AdapterMoneda.MonedaAdapterListener {
                     _BindingInflaDialog.etxtFormSimbolo.text.toString()
                 )
 
-                MonedaAdapter.notifyDataSetChanged()
+                CargarListaMonedas()
 
-                MoneyApplication._FunsHelper.SuccessDialogSimple(
+                _FunsHelper.SuccessDialogSimple(
                     this@Monedas,
                     "Exito",
                     "Se Edito Correctamente"
                 )
             } catch (e: Exception) {
-                MoneyApplication._FunsHelper.ErrorDialogSimple(
+                _FunsHelper.ErrorDialogSimple(
                     this@Monedas,
                     "Error",
                     "No Se Edito Correctamente"
@@ -142,7 +145,7 @@ class Monedas : AppCompatActivity(), AdapterMoneda.MonedaAdapterListener {
     }
 
     override fun onMonedaEliminar(Posicion: Int, Moneda: MonedaModel?) {
-        MoneyApplication._FunsHelper.WarningDialogConfirm(
+        _FunsHelper.WarningDialogConfirm(
             this,
             getString(R.string.app_name),
             "Estas realmente seguro de Eliminar este Registro?"
@@ -154,15 +157,15 @@ class Monedas : AppCompatActivity(), AdapterMoneda.MonedaAdapterListener {
                         Moneda!!.ID
                     )
 
-                    MonedaAdapter.notifyDataSetChanged()
+                    CargarListaMonedas()
 
-                    MoneyApplication._FunsHelper.SuccessDialogSimple(
+                    _FunsHelper.SuccessDialogSimple(
                         this@Monedas,
                         "Exito",
                         "Se Eliminó Correctamente"
                     )
                 } catch (e: Exception) {
-                    MoneyApplication._FunsHelper.ErrorDialogSimple(
+                    _FunsHelper.ErrorDialogSimple(
                         this@Monedas,
                         "Error",
                         "No Se Eliminó Correctamente"
@@ -171,7 +174,6 @@ class Monedas : AppCompatActivity(), AdapterMoneda.MonedaAdapterListener {
                 _Dialog.dismiss()
             }
         }).show()
-
     }
 
     override fun onSupportNavigateUp(): Boolean {

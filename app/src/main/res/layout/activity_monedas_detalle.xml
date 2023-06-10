@@ -1,265 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/vector_fondo_pantalla"
     android:padding="10dp"
     tools:context=".UI.View.MonedasDetalle">
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/SRLListaSemillas"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <RelativeLayout
+        <!--INFO ARRIBA MONEDA-->
+        <LinearLayout
+            android:id="@+id/ly_iarribafac"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_border_item"
+            android:orientation="vertical"
+            android:padding="10dp">
 
-            <!--INFO ARRIBA SEMILLA-->
+
             <LinearLayout
-                android:id="@+id/ly_iarribafac"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/background_border_item"
-                android:orientation="vertical"
-                android:padding="10dp">
+                android:orientation="horizontal">
 
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Descripción"
-                        android:textColor="@color/GrisSemiClaro"
-                        android:textSize="15sp"
-                        app:fontFamily="@font/circularctdmediumitalic" />
-
-                    <TextView
-                        android:id="@+id/tv_viv_descrip"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="right"
-                        android:text="--"
-                        android:textColor="@color/GrisOscuro"
-                        android:textSize="15sp"
-                        app:fontFamily="@font/circularstdblack" />
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Delegación"
-                        android:textColor="@color/GrisSemiClaro"
-                        android:textSize="15sp"
-                        app:fontFamily="@font/circularctdmediumitalic" />
-
-                    <TextView
-                        android:id="@+id/tv_viv_delega"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="right"
-                        android:text="--"
-                        android:textColor="@color/GrisOscuro"
-                        android:textSize="15sp"
-                        app:fontFamily="@font/circularstdblack" />
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Departamento"
-                        android:textColor="@color/GrisSemiClaro"
-                        android:textSize="15sp"
-                        app:fontFamily="@font/circularctdmediumitalic" />
-
-                    <TextView
-                        android:id="@+id/tv_viv_departa"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="right"
-                        android:text="--"
-                        android:textColor="@color/GrisOscuro"
-                        android:textSize="15sp"
-                        app:fontFamily="@font/circularstdblack" />
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Municipio"
-                        android:textColor="@color/GrisSemiClaro"
-                        android:textSize="15sp"
-                        app:fontFamily="@font/circularctdmediumitalic" />
-
-                    <TextView
-                        android:id="@+id/tv_viv_munici"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="right"
-                        android:text="--"
-                        android:textColor="@color/GrisOscuro"
-                        android:textSize="15sp"
-                        app:fontFamily="@font/circularstdblack" />
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Comunidad"
-                        android:textColor="@color/GrisSemiClaro"
-                        android:textSize="15sp"
-                        app:fontFamily="@font/circularctdmediumitalic" />
-
-                    <TextView
-                        android:id="@+id/tv_viv_comuni"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="right"
-                        android:text="--"
-                        android:textColor="@color/GrisOscuro"
-                        android:textSize="15sp"
-                        app:fontFamily="@font/circularstdblack" />
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Coordenadas X"
-                        android:textColor="@color/GrisSemiClaro"
-                        android:textSize="15sp"
-                        app:fontFamily="@font/circularctdmediumitalic" />
-
-                    <TextView
-                        android:id="@+id/tv_viv_coordx"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="right"
-                        android:text="--"
-                        android:textColor="@color/GrisOscuro"
-                        android:textSize="15sp"
-                        app:fontFamily="@font/circularstdblack" />
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Coordenadas Y"
-                        android:textColor="@color/GrisSemiClaro"
-                        android:textSize="15sp"
-                        app:fontFamily="@font/circularctdmediumitalic" />
-
-                    <TextView
-                        android:id="@+id/tv_viv_coordy"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="right"
-                        android:text="--"
-                        android:textColor="@color/GrisOscuro"
-                        android:textSize="15sp"
-                        app:fontFamily="@font/circularstdblack" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <!--INFO ABAJO SEMILLA-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/ly_iarribafac"
-                android:background="@drawable/background_border_item"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <!--TITULO DETALLE FACTURA -->
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Detalle de Semillas"
+                    android:layout_weight="1"
+                    android:text="Nombre"
                     android:textColor="@color/GrisSemiClaro"
                     android:textSize="15sp"
                     app:fontFamily="@font/circularctdmediumitalic" />
 
-                <!--LISTA DETALLE FACTURA -->
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/RVListaDetalleSemillas"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="5dp"
-                    android:orientation="vertical"
-                    tools:listitem="@layout/activity_card_recyclerview_item_3" />
+                <TextView
+                    android:id="@+id/tv_tcambio_nombre"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="--"
+                    android:textColor="@color/GrisOscuro"
+                    android:textSize="15sp"
+                    app:fontFamily="@font/circularstdblack" />
 
             </LinearLayout>
 
-        </RelativeLayout>
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Pais"
+                    android:textColor="@color/GrisSemiClaro"
+                    android:textSize="15sp"
+                    app:fontFamily="@font/circularctdmediumitalic" />
+
+                <TextView
+                    android:id="@+id/tv_tcambio_pais"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="--"
+                    android:textColor="@color/GrisOscuro"
+                    android:textSize="15sp"
+                    app:fontFamily="@font/circularstdblack" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Simbolo"
+                    android:textColor="@color/GrisSemiClaro"
+                    android:textSize="15sp"
+                    app:fontFamily="@font/circularctdmediumitalic" />
+
+                <TextView
+                    android:id="@+id/tv_tcambio_simbolo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="--"
+                    android:textColor="@color/GrisOscuro"
+                    android:textSize="15sp"
+                    app:fontFamily="@font/circularstdblack" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--INFO ABAJO TASA CAMBIO-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/ly_iarribafac"
+            android:background="@drawable/background_border_item"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Detalle de Tasa de Cambio"
+                android:textColor="@color/GrisSemiClaro"
+                android:textSize="15sp"
+                app:fontFamily="@font/circularctdmediumitalic" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/RVListaDetalleMonedas"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical"
+                tools:listitem="@layout/activity_card_recyclerview_item_2" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_agregar"

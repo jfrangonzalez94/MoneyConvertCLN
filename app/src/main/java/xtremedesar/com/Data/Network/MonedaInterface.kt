@@ -8,7 +8,7 @@ import java.util.ArrayList
 
 interface MonedaInterface {
 
-    fun getAllMonedas(_Realm: Realm): RealmResults<MonedaModel>
+    fun getAllMonedas(_Realm: Realm): List<MonedaModel>
 
     fun addMoneda(_Realm: Realm, _Nombre: String, _Pais: String, _Simbolo: String)
 

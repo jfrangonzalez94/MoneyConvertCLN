@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/vector_fondo_pantalla"
+    android:padding="10dp"
+    tools:context=".UI.View.Calculadora">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ly_iarribafac"
+        android:background="@drawable/background_border_item"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="Cambiar de:"
+            android:textColor="@color/Negro"
+            android:textSize="20sp"
+            app:fontFamily="@font/circularctdmediumitalic" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/LoginTextInputLayoutStyle"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:hint="Cantidad"
+                android:textColorHint="@color/colorPrimary"
+                app:startIconDrawable="@drawable/ic_registro"
+                app:startIconTint="@color/colorPrimaryDark">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etxtFormCantidad"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:inputType="numberDecimal"
+                    android:text="1"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Spinner
+                android:id="@+id/sp_FormMoneda"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="3"
+                android:background="@drawable/shape_background"
+                android:inputType="textPersonName"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                android:textStyle="normal|bold" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:text="Cambiar a:"
+            android:textColor="@color/Negro"
+            android:textSize="20sp"
+            app:fontFamily="@font/circularctdmediumitalic" />
+
+        <Spinner
+            android:id="@+id/sp_FormTasaCambio"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/shape_background"
+            android:inputType="textPersonName"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            android:textStyle="normal|bold" />
+
+        <Button
+            android:id="@+id/BtnFormCalcular"
+            style="@style/ButtonStyleFilled"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="Calcular"
+            android:textAlignment="gravity"
+            android:textColor="@color/Blanco0"
+            android:textSize="18sp" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/LoginTextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Dinero Cambiado"
+            android:textColorHint="@color/colorPrimary"
+            app:startIconDrawable="@drawable/ic_registro"
+            app:startIconTint="@color/colorPrimaryDark">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etxtFormDineroCambiado"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:enabled="false"
+                android:inputType="numberDecimal"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

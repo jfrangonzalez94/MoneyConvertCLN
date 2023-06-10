@@ -12,8 +12,8 @@ import java.util.UUID
 
 class TasaCambioService : TasaCambioInterface {
 
-    override fun getAllTasaCambios(_Realm: Realm): RealmResults<TasaCambioModel> {
-        val _ListTasaCambio = _Realm.where(TasaCambioModel::class.java).findAll()
+    override fun getAllTasaCambios(_Realm: Realm, _IdMoneda: String): List<TasaCambioModel> {
+        val _ListTasaCambio = _Realm.where(TasaCambioModel::class.java).findAll().toList().filter { it.IDMoneda == _IdMoneda }
         return _ListTasaCambio
     }
 
@@ -46,12 +46,12 @@ class TasaCambioService : TasaCambioInterface {
     }
 
     override fun deleteTasaCambio(_Realm: Realm, _Id: String) {
-        val _Nota = _Realm.where(TasaCambioModel::class.java)
+        val _TCambio = _Realm.where(TasaCambioModel::class.java)
             .equalTo("ID", _Id)
             .findFirst()
 
         _Realm.executeTransaction {
-            _Nota!!.deleteFromRealm()
+            _TCambio!!.deleteFromRealm()
         }
     }
 

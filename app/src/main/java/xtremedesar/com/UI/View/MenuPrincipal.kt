@@ -33,6 +33,9 @@ class MenuPrincipal : AppCompatActivity() {
                 R.id.nav_moneda_lista -> {
                     startActivity(Intent(this, Monedas::class.java))
                 }
+                R.id.nav_moneda_calculadora -> {
+                    startActivity(Intent(this, Calculadora::class.java))
+                }
                 R.id.nav_sistema_version -> {
                     _FunsHelper.InfoDialogSimple(
                         this,

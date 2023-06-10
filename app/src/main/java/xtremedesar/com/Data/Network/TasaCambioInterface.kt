@@ -9,7 +9,7 @@ import java.util.ArrayList
 
 interface TasaCambioInterface {
 
-    fun getAllTasaCambios(_Realm: Realm): RealmResults<TasaCambioModel>
+    fun getAllTasaCambios(_Realm: Realm, _IdMoneda: String): List<TasaCambioModel>
 
     fun addTasaCambio(_Realm: Realm, _TasaCambio: String, _Pais: String, _IdMoneda: String)
 

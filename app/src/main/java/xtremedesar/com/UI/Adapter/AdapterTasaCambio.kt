@@ -7,18 +7,18 @@ import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
 import io.realm.RealmResults
-import xtremedesar.com.Data.Model.MonedaModel
+import xtremedesar.com.Data.Model.TasaCambioModel
 import xtremedesar.com.R
-import xtremedesar.com.databinding.ActivityCardRecyclerviewItemBinding
+import xtremedesar.com.databinding.ActivityCardRecyclerviewItem2Binding
 
-class AdapterMoneda(
+class AdapterTasaCambio(
     private val _Context: Context,
-    private var ListaMoneda: List<MonedaModel>,
-    private val _Listener: MonedaAdapterListener,
-) : RecyclerView.Adapter<AdapterMoneda.ViewHolder>() {
+    private var ListaTasaCambio: List<TasaCambioModel>,
+    private val _Listener: TasaCambioAdapterListener,
+) : RecyclerView.Adapter<AdapterTasaCambio.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val _Binding = ActivityCardRecyclerviewItemBinding.inflate(
+        val _Binding = ActivityCardRecyclerviewItem2Binding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
@@ -26,31 +26,22 @@ class AdapterMoneda(
         return ViewHolder(_Binding)
     }
 
-    class ViewHolder(val _Binding: ActivityCardRecyclerviewItemBinding) :
+    class ViewHolder(val _Binding: ActivityCardRecyclerviewItem2Binding) :
         RecyclerView.ViewHolder(_Binding.root) {
     }
 
     override fun onBindViewHolder(_Holder: ViewHolder, Posicion: Int) {
         with(_Holder){
-            with(ListaMoneda[Posicion]){
-                _Binding.tvRegistroNombre.setText(this?.Nombre)
+            with(ListaTasaCambio[Posicion]){
+                _Binding.tvRegistroNombre.setText(this?.TasaCambio)
                 _Binding.tvRegistroPais.setText(this?.Pais)
-                _Binding.tvRegistroSimbolo.setText(this?.Simbolo)
                 _Binding.lyMenu.setOnClickListener {
                     val popupMenus = PopupMenu(_Context, it)
-                    popupMenus.inflate(R.menu.show_menu)
+                    popupMenus.inflate(R.menu.show_menu_2)
                     popupMenus.setOnMenuItemClickListener {
                         when (it.itemId) {
-                            R.id.detail_registro -> {
-                                _Listener.onMonedaDetalle(Posicion, this)
-                                true
-                            }
-                            R.id.edit_registro -> {
-                                _Listener.onMonedaEditar(Posicion, this)
-                                true
-                            }
                             R.id.elim_registro -> {
-                                _Listener.onMonedaEliminar(Posicion, this)
+                                _Listener.onTasaCambioEliminar(Posicion, this)
                                 true
                             }
                             else -> true
@@ -69,12 +60,10 @@ class AdapterMoneda(
         }
     }
 
-    interface MonedaAdapterListener {
-        fun onMonedaDetalle(Posicion: Int, Moneda: MonedaModel?)
-        fun onMonedaEditar(Posicion: Int, Moneda: MonedaModel?)
-        fun onMonedaEliminar(Posicion: Int, Moneda: MonedaModel?)
+    interface TasaCambioAdapterListener {
+        fun onTasaCambioEliminar(Posicion: Int, TasaCambio: TasaCambioModel?)
     }
 
-    override fun getItemCount() = ListaMoneda.size
+    override fun getItemCount() = ListaTasaCambio.size
 
 }

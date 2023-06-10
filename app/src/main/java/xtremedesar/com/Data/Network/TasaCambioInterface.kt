@@ -11,6 +11,8 @@ interface TasaCambioInterface {
 
     fun getAllTasaCambios(_Realm: Realm, _IdMoneda: String): List<TasaCambioModel>
 
+    fun getAllTasaCambiosGen(_Realm: Realm): List<TasaCambioModel>
+
     fun addTasaCambio(_Realm: Realm, _TasaCambio: String, _Pais: String, _IdMoneda: String)
 
     fun updateTasaCambio(

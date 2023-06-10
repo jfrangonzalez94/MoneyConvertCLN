@@ -8,6 +8,9 @@ import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import com.thecode.aestheticdialogs.AestheticDialog
 import com.thecode.aestheticdialogs.OnDialogClickListener
+import io.realm.Realm
+import www.sanju.todonotes.Interface.MonedaService
+import www.sanju.todonotes.Interface.TasaCambioService
 import xtremedesar.com.Application.MoneyApplication.Companion._FunsHelper
 import xtremedesar.com.R
 import xtremedesar.com.databinding.ActivityMenuPrincipalBinding
@@ -16,6 +19,9 @@ class MenuPrincipal : AppCompatActivity() {
 
     private lateinit var _Binding: ActivityMenuPrincipalBinding
     lateinit var Toggle: ActionBarDrawerToggle
+    private lateinit var _Realm: Realm
+    private var _MonedaService: MonedaService = MonedaService()
+    private var _TasaCambioServiceService: TasaCambioService = TasaCambioService()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,9 +39,11 @@ class MenuPrincipal : AppCompatActivity() {
                 R.id.nav_moneda_lista -> {
                     startActivity(Intent(this, Monedas::class.java))
                 }
+
                 R.id.nav_moneda_calculadora -> {
                     startActivity(Intent(this, Calculadora::class.java))
                 }
+
                 R.id.nav_sistema_version -> {
                     _FunsHelper.InfoDialogSimple(
                         this,
@@ -48,6 +56,7 @@ class MenuPrincipal : AppCompatActivity() {
                         }"
                     )
                 }
+
                 R.id.nav_sistema_cerrar -> {
                     AntesdeSalir()
                 }
@@ -55,6 +64,21 @@ class MenuPrincipal : AppCompatActivity() {
             true
         }
 
+        //INICIAR REALM
+        _Realm = Realm.getDefaultInstance()
+
+        CargarContadores()
+    }
+
+    private fun CargarContadores() {
+        _Binding.appBarMain.txtTotalmonedas.setText("${_MonedaService.getAllMonedas(_Realm).size}")
+        _Binding.appBarMain.txtTotaltasacambio.setText(
+            "${
+                _TasaCambioServiceService.getAllTasaCambiosGen(
+                    _Realm
+                ).size
+            }"
+        )
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

@@ -13,7 +13,13 @@ import java.util.UUID
 class TasaCambioService : TasaCambioInterface {
 
     override fun getAllTasaCambios(_Realm: Realm, _IdMoneda: String): List<TasaCambioModel> {
-        val _ListTasaCambio = _Realm.where(TasaCambioModel::class.java).findAll().toList().filter { it.IDMoneda == _IdMoneda }
+        val _ListTasaCambio = _Realm.where(TasaCambioModel::class.java).findAll().toList()
+            .filter { it.IDMoneda == _IdMoneda }
+        return _ListTasaCambio
+    }
+
+    override fun getAllTasaCambiosGen(_Realm: Realm): List<TasaCambioModel> {
+        val _ListTasaCambio = _Realm.where(TasaCambioModel::class.java).findAll().toList()
         return _ListTasaCambio
     }
 
